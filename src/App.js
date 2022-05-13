@@ -1,24 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import { Canvas } from "@react-three/fiber";
+import { Controls } from "react-three-gui";
+import "./App.css";
+
+import Scene from "./Components/Scene";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+    <>
+      <Controls.Provider>
+        <Controls.Canvas
+          style={{ position: "fixed", top: 0, left: 0, height: "100vh" }}
         >
-          Learn React
-        </a>
-      </header>
-    </div>
+          <Scene />
+        </Controls.Canvas>
+        <Controls />
+      </Controls.Provider>
+    </>
   );
 }
 
