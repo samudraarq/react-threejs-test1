@@ -1,4 +1,6 @@
+import { OrbitControls, OrthographicCamera } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
+import { Suspense } from "react";
 import { Controls } from "react-three-gui";
 import "./App.css";
 
@@ -6,16 +8,20 @@ import Scene from "./Components/Scene";
 
 function App() {
   return (
-    <>
-      <Controls.Provider>
-        <Controls.Canvas
-          style={{ position: "fixed", top: 0, left: 0, height: "100vh" }}
-        >
+    <div id="canvas-container">
+      {/* <Controls.Provider>
+        <Controls.Canvas>
           <Scene />
         </Controls.Canvas>
         <Controls />
-      </Controls.Provider>
-    </>
+      </Controls.Provider> */}
+      <Canvas>
+        <Suspense fallback={null}>
+          <OrbitControls />
+          <Scene />
+        </Suspense>
+      </Canvas>
+    </div>
   );
 }
 
